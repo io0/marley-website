@@ -43,8 +43,44 @@ img {margin-bottom: -7px}
     </div>
     </div>
     <p>
-            Figured we'd start with something pretty! We made a visualization of your brainwaves (moves in real time) to make the interpretation of your mental state more intuitive.</p>
+            Figured we'd start with something pretty! We made a visualization of your brainwaves (above, moving in real time) to make the interpretation of your mental state more intuitive.</p>
 
+    <p style="font-style:italic">Results</p>
+    <p>
+    <div class="row">
+    <div class="col-6">
+    <div class="w3-row-padding" style="padding:10px">
+        <img src='img/ezgif-5-4d2d650d82f2.gif' style="width:100%">
+    </div>
+    </div>
+    <div class="col-4">
+    Building on the results from last week (left: clusters of mental states in the spectral feature space), we wanted to find out how generalizable our results are.
+    </div>
+    </div>
+
+    <div class="row">
+        <div class="col-9">
+            <div class="w3-row-padding" id="myGrid" style="padding:0px">
+              <div class="w3-third">
+                <img src="img/focus.png" style="width:100%">
+              </div>
+
+              <div class="w3-third">
+                <img src="img/eyes_closed.png" style="width:100%">
+              </div>
+
+              <div class="w3-third">
+                <img src="img/rest.png" style="width:100%">
+              </div>
+            </div>
+        </div>
+    </div>
+    <p>
+        Above: plots of the distributions of time windows in each trial for 3 conditions
+            <div style='font-style: italic'>Remarks:</div>
+            1. Qualitatively, it appears the 'focused' state remains similar across trials, days, and electrode setups. <br>
+            2. Alpha waves appear in the eyes closed condition with varying degrees of strength and frequency (interestingly, some trials have bimodal distributions).<br>
+            3. The rest state exhibits the most variance, presumably due to different levels of relaxation (in experiments, a fully peaceful mind is more difficult to induce than a fully preoccupied one).
     <p style="font-style:italic">Hardware</p>
     <p>
     A reminder of the headband design:
@@ -64,7 +100,7 @@ img {margin-bottom: -7px}
                 </div>
           </div>
     </div>
-    <p>We started to consider the challenge involved in getting an EEG setup in a minimalistic headband </p>
+    <p>We started on the challenge of fitting an EEG setup in a minimalistic headband </p>
 <div class="row"><div class="col-1">-</div> <div class="col">
 ModularEEG has created an open source board layout for EEG amplifiers. This board is about credit card sized hence it will likely not work for us. Most boards face the same problem as they require an instrumentation amplifier and precision resistors which are all large. </div></div>
 <div class="row"><div class="col-1">-</div> <div class="col">
