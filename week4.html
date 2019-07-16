@@ -68,29 +68,35 @@
     <p> Another trace, this one is a lot cleaner. You don't see the two lines around 30 Hz, which are probably from noise. </p>
     <div class="row">
         <div class="col-8">
-        <figure class="figure">
-        <img src='img/baselines.png' style="width:100%">
-        <figcaption class="figure-caption" style="font-size:small;padding-top:10px">Baseline activity in trials.</figcaption>
-        </figure>
+            <figure class="figure">
+            <img src='img/baselines.png' style="width:100%">
+            <figcaption class="figure-caption" style="font-size:small;padding-top:10px">Baseline activity in trials.</figcaption>
+            </figure>
     </div>
     </div>
-    <p>A question we had was whether or not the baseline varied signficantly across trials (above). </p>
+    <p>A question we had was whether or not the baseline varied signficantly across trials (above). Perhaps we can use some baseline normalization or scale according to the power at 60 Hz (mains line interference).</p>
     <div class="row">
         <div class="col-8">
+            <figure class="figure">
             <img src='img/screenshot.png' style="width:100%">
+            <figcaption class="figure-caption" style="font-size:small;padding-top:10px">My desktop. Suffice it to say a lot of plotting had to be done!</figcaption>
+            </figure>
         </div>
     </div>
     <p>
-        My desktop. Suffice it to say a lot of plotting had to be done!
     </p>
 
     <p>
-        We fed the time-frequency features to linear classifiers like LDA and SVM and obtained accuracies in the 90-96% range. One thing I'm worried about is whether I can train on one subject and test on another, so that will be my goal next week.
+        We fed the time-frequency features to linear classifiers (i.e. LDA, SVM) and obtained accuracies in the 90-96% range for 4 classes: artifact, unattentive (rest), attentive (focused), and high workload (coding, reading). </p>
+    <p>
+    Which sounds nice, but there's still a lot to think about. How can the information be presented? Can we make continuous metrics instead of binary classes? One thing I'm worried about is whether I can train on one subject and test on another, so that will be my goal next week.
     </p>
 <p style="font-weight:bold">Hardware</p>
     <p>
-    
-    <div class="row" style="padding-top:20px">
+        We got the physical display working. It's really awesome—we can't wait to hook the lights up to our brainwaves!</p>
+
+
+    <div class="row" style="padding-top:10px">
     <div class="col">
         <figure class="figure">
         <img src='img/ezgif-4-8efef2385ed4.gif' style="width:100%">
@@ -98,8 +104,25 @@
         </figure>
     </div>
     </div>
+
     <p>
-        We got the physical display working. It's really awesome—we can't wait to hook the lights up to our brainwaves.
+    We also redesigned the case for the headband. For the initial proof of concept, we opted to use open-source electrodes and amplifiers. </p>
+    <div class="row">
+    <div class="w3-row-padding" style="padding:10px">
+        <div class="w3-third" id="myGrid">
+                <img src='img/case3.png' style="width:100%">
+              </div>
+
+              <div class="w3-third">
+                <img src='img/case4.png' style="width:100%">
+              </div>
+              <div class="w3-third">
+
+                <img src="img/case5.png" style="width:100%">
+                </div>
+          </div>
+    </div>
+
     </div>
 
 
