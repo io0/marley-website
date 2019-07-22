@@ -84,14 +84,14 @@ For the next version we want to work on the attachment between the two shells. P
     <div class="row">
         <div class="col-12">
             <figure class="figure">
-            <img src='img/Figure_28.png' style="width:100%">
-            <figcaption class="figure-caption" style="font-size:small;padding-top:10px">Top: spectrogram of EEG trace over 30 minutes. Middle: ground truth (green = coding, blue = rest). Bottom: classifier predictions</figcaption>
+            <img src='img/classifier.png' style="width:100%">
+            <figcaption class="figure-caption" style="font-size:small;padding-top:15px">Top: spectrogram of EEG trace over 30 minutes. Middle: ground truth (green = coding, blue = rest). Bottom: classifier predictions</figcaption>
             </figure>
     </div>
     </div>
-    <p> Here you see the output of our classifer. In dark purple we have instances of EMG or blink artifacts, which would be rejected before the data is fed to a classifier. For illustration purposes we kept those trials and predicted on the full trace. </p>
+    <p> Here you see the performance of our classifer. The white bars are instances of EMG or blink artifacts, which would be rejected before the data is fed to a classifier. For illustration purposes we kept those trials and predicted on the full trace. </p>
     
-    <p>The model was trained on other sessions, so this entire 30 minute trace has never been seen before by the classifier. Pretty awesome that it could detect as soon as I stopped coding!</p>
+    <p>Results shown are inter-trial cross validation, meaning this 30-minute segment and other recordings from the same day have never been seen before by the classifier. Pretty awesome that it could detect as soon as I stopped coding!</p>
 
 
             <!--
