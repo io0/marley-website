@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Marley</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/style.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts-->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'> 
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+
+<!-- Header -->
+
+<div class="container" style="padding-top: 100px">
+        <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+    <div class="row">
+        <div class="col"
+            <div class="post-heading">
+                <h1>Week 6</h1>
+                <!--<h2 class="subheading">Part 2: Saving Tensorflow graphs developed with Keras</h2>!-->
+                <span class="meta">July 28, 2019</span>
+            </div>
+        </div>
+
+    <div class="row" style="padding-top:20px">
+    <div class="col-8">
+        <img src='img/focusedvrest.gif' style="width:100%">
+    </div>
+    </div>
+            <p> One of the challenges of classifying EEG is the immense variability in the spectral profile from user to user and even within user, session to session.</p>
+            <p>Above, you can see that although the data points (3-second windows) are clearly separable within an experiment, the feature space of the clusters changes vastly from session to session. </p>
+            <p>To address these shortcomings, we tried a variety of signal processing techniques and power normalizations.</p>
+        <div class="row">
+    <div class="col-8">
+        <img src='img/Figure_18.png' style="width:100%">
+    </div>
+        <p> Top: spectrogram before and after applying signal processing algorithms. The differences from baseline are emphasized and captured better. </p>
+    </div>
+
+    <div class="row" style="padding-top:50px">
+    <div class="col-6">
+        <img src='img/focusedvrest.gif' style="width:100%">
+    </div>
+    <div class="col-6">
+        <img src='img/normalized.gif' style="width:100%">
+    </div>
+    </div>
+    <p> On the right we have the data after normalization (apologies I couldn't figure out how to sync the gifs). Visually it would seem easier to draw a hyperplane to classify the data. </p>
+
+    <div class="row" style="padding-top:50px">
+    <div class="col">
+
+        <figure class="figure">
+            <img src='img/ezgif-4-5393462b3c21.gif' style="width:100%">
+            <figcaption class="figure-caption" style="font-size:small;padding-top:15px">Reminder of what we're making! We made a fully functional headband prototype. </figcaption>
+            </figure>
+    </div>
+    </div>
+    <p></p>
+    <div class="row">
+        <div class="col-12">
+            <figure class="figure">
+            <img src='img/classifier.png' style="width:100%">
+            <figcaption class="figure-caption" style="font-size:small;padding-top:15px">Top: spectrogram of EEG trace over 30 minutes. Middle: ground truth (green = coding, blue = rest). Bottom: classifier predictions</figcaption>
+            </figure>
+    </div>
+    </div>
+
+
+            <!--
+            I used the spectrograms to verify the quality of the signal and inform feature extraction. Here, you can see a significant increase in alpha (10Hz) waves during eyes closed, moderate alpha during rest, and no alpha elsewhere. The short vertical lines in the low frequency regions are blinks. There's a visible band of yellow in the delta (0-4Hz) band when the activity was more passive (watching a video) than active (reading a paper). </p>-->
+    
+
+
+
+
+<!-- End Page Content -->
+</div>
+</div>
+
+
+<script>
+// Toggle grid padding
+function myFunction() {
+    var x = document.getElementById("myGrid");
+    if (x.className === "w3-row") {
+        x.className = "w3-row-padding";
+    } else {
+        x.className = x.className.replace("w3-row-padding", "w3-row");
+    }
+}
+
+// Open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.width = "100%";
+    document.getElementById("mySidebar").style.display = "block";
+}
+
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+}
+</script>
+
+</body>
+</html>
