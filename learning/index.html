@@ -1,0 +1,636 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>So how does learning work?</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+article {
+    max-width: 600px;
+    margin-top: 6em;
+    margin-left: 9em;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="76f3c4c8-82c5-4364-9d65-9fb19d36f7e6" class="page sans"><header><h1 class="page-title">So how does learning work?</h1></header><div class="page-body"><p id="1fa5f599-b8db-4d43-950a-bc8e486fe000" class="">I&#x27;ve asked a lot of people how learning works and nearly every time the response is synaptic plasticity. It refers to the curious process by which synapses - connections between neurons - strengthen or weaken in response to co-occurring activity in neurons, and I probably hear about it more often than anything else in the neuroscience universe.</p><p id="e6f80e87-4735-443d-871d-c536e6d8fc08" class="">Still, it&#x27;s a bit odd, equivalent to asking a computer scientist how computer programs work and receiving an answer instead about how a transistor switches state. So how does learning <em>actually</em> work? Either the neuroscience community hasn&#x27;t figured it out yet, or they&#x27;re delighting in leaving us on a cliffhanger.</p><p id="4bdd7921-10c4-47cc-8861-0fab3e6f6fcc" class="">I went and tried to uncover what we know and don&#x27;t know about how learning <em>actually </em>works. I also took a deep dive into some selected works with ideas that I found particularly interesting and share them here in as plain of English as possible.</p><p id="91cd8f04-97bd-48a9-ab34-42df002654d6" class="">Broadly, there seems to be three interesting approaches. One: you could measure things in the brain directly. This is a hard thing to do in the case of anything that involves organic material, and in particular establishing a causal link between synaptic activity and behavioural output would require a large number of simultaneous recordings in vivo (Humeau and Choquet, <a href="https://www.nature.com/articles/s41593-019-0480-6">2019</a>). Short of a perfect experiment like that, we could ask other questions about the brain&#x27;s physical structures, hoping to infer processes from substrate.</p><p id="cfe6f30d-eb1a-4ff9-b2f6-1df1f78aef67" class="">Two: you could take what you already know about the substrate and design learning algorithms that match biological constraints. You run simulations on your models, test how well they learn empirically, and iterate on the design of your models using their performance as your guiding light.</p><p id="e94399f1-ea58-4dce-a338-d54cc5c4433b" class="">Three: you can create models that work empirically and theorize about their similarity to biological learning. This seems a bit ridiculous, but given that we&#x27;ve managed to create our own working learning algorithms in the past few years by way of ANNs, we can ask questions about whether there are similar mechanisms in the brain. In one direction you have neuroscience informing the design of better AI, in another you have novel, performative ANN designs, which may inspire theories about neuroscience.</p><p id="e9e76d79-8911-4f10-9599-95bd021bf0db" class="">Not to say that these approaches are mutually exclusive—in fact, they are required to inform each other. But I think it&#x27;s a good layout for our exploration.</p><h2 id="5e7a368d-1fbd-4ed9-b250-acc3d15ed7cf" class="">Background</h2><p id="1a4c469e-d886-4be3-a2be-56b90f51b27e" class="">First, a little bit of definition. Learning is when the brain takes in new information—from any sensory modality—and either stores it or represents it in a way that modulates future activities. It includes a broad range of tasks like motor training, object recognition, and explicit memory formation. Clearly, this is happening all the time in humans and is arguably the substance of intelligence.</p><p id="4efa278d-b3ec-4ed2-8c57-9103a5ca4850" class="">To understand learning is to figure out what&#x27;s happening at the synaptic, cellular, and network levels during learning.</p><h3 id="c6ed4f8a-65af-490a-946d-f4cbb2370785" class="">Synaptic plasticity</h3><p id="6faec250-d662-4fdd-83ce-d0361fd1330c" class="">Synaptic plasticity can be thought of as the atomic subunit of learning. We discovered this fairly early on, as scientists in the late 1800s found that an adult and a baby have roughly the same number of neurons. In other words, new knowledge could not be the result of new neuron production, and information must instead be contained in the connections between neurons. The 1950s were when Donald Hebb proposed how this might arise—coincident activity in the pre- and postsynaptic neurons would strengthen the synapse, making the postsynaptic neuron more sensitive to future activity (Hebb, 1949). </p><p id="3a86e143-84ab-4854-83ff-d40becf64c63" class="">Long-term synaptic plasticity was discovered in the 1970s (Bliss and Lomo, 1973). It involves metabolic and structural changes to the synapse that increase (long-term potentiation, LTP) or decrease (long-term depression, LTD) the efficacy of signal transmission.</p><figure id="b0d4330c-cb54-4892-8fdd-23d882ae598c" class="image"><a href="So%20how%20does%20learning%20work/Untitled.png"><img style="width:288px" src="So%20how%20does%20learning%20work/Untitled.png"/></a><figcaption>Figure 1. The process of long-term potentiation and long-term depression (Payeur et al., 2020). Coincident spiking increases the postsynaptic sensitivity to activity.</figcaption></figure><p id="b0020923-fa3e-4e30-b7ed-d6a18748ba31" class="">The canonical evidence for LTP and LTD comes from fear conditioning experiments where a cue is associated with a foot shock. The experiment is conceptually very straightforward: you have two coincident stimuli, and &quot;learning&quot; consists of associating one stimulus (the cue) with the other (the foot shock) upon further exposure to the first. After chemically blocking LTP, the animal no longer learns the association and does not respond to the cue. </p><p id="077d3e32-0d2d-45f0-af2a-9fc3e93b7965" class="">LTP is highly illuminating for local circuits and simple processes involving few synapses. But what about explicit memories? Memories are known to be encoded in multiple neurons in complex and not entirely well-understood distributions across the cortex. Further, what about complex tasks involving hierarchical networks? It is hypothesized that brain networks are structured in a hierarchy from low-level receptors to high-level neurons in the cortex. How do you propagate LTP or LTD from a neuron in a higher-order area to neurons that are multiple synapses away?</p><p id="5be94d26-b2e7-44a7-8f8f-7b023a9ba66b" class="">Compared to what we know at the synaptic level, there is still very little clarity on what happens at a network level in order for learning to occur. </p><h2 id="fe053d91-27dc-4995-8695-d1736c2c266c" class="">I. Physiology of neural networks</h2><blockquote id="7936a3b8-a216-480b-a215-40bc70a54b86" class="">Nearly a century after the neuroanatomical organization of the cortex was first defined, its basic logic remains
+unknown. (Marcus, <a href="https://science.sciencemag.org/content/346/6209/551">2014</a>)</blockquote><p id="3e9ab1a2-82b2-438b-ba53-eeab21ebae17" class="">It turns out that we actually don&#x27;t know how things work on a network level. We have a couple hypotheses, and models for specific tasks and computations, but no &quot;big-picture&quot; understanding of the cortex&#x27;s logic.</p><p id="10ffcf39-733b-4b1e-8839-42580f84f565" class="">One hypothesis which has prevailed for 40 years is that the same canonical microcircuit is copy-pasted everywhere in the cortex (Creutszfeld, 1977). At the level of the cell, cortical slices appear plenty similar, featuring 6 distinct layers regardless of task and location.</p><p id="6f0ddc85-0418-4f09-9c67-a4f2f942b3a8" class="">Recently, Marcus et al. (<a href="https://science.sciencemag.org/content/346/6209/551.full">2014</a>) argue that actually, there is no canonical microcircuit, and that computational circuits vary widely from one area to the next. Pre-structured connectivity provides inductive biases in learning, so, for example, the sensory cortex would be rich in hierarchical circuits. Indeed, physiological evidence exists for differential organization between sensory areas (Scala et al. <a href="https://www.biorxiv.org/content/10.1101/507293v1">2018</a>) in the mouse.</p><p id="1b3732d1-3b12-41ca-b316-733663caa00b" class="">The implication of the second hypothesis is that a certain amount of learning is &quot;baked in&quot; to the network—you would have separate circuit structures for object recognition and motor training, for example. Whereas in the first view, the brain starts off with just a cost function and limited structure, and acquires speciality through training and input data. </p><h3 id="e70c903b-3469-4321-8ec3-3c59c9d15fc8" class="">Connectomics</h3><p id="f9095a3f-4300-4c79-bdc2-da935f2312e0" class="">Connectomics, or the mapping out all of the neurons and synapses in the brain, would be able to answer large-scale questions about learning, namely about microcircuit uniformity or heterogeneity across areas. Although a full map of the mammalian brain seems far off, a joint effort by Janelia and Google has produced the world&#x27;s first synapse-resolution map of a fly brain (<a href="https://www.biorxiv.org/content/10.1101/2020.01.21.911859v1">2020</a>), and in the process has developed segmentation techniques that may one day be relevant for mapping a mammalian connectome. </p><p id="d54d2497-3847-4f5d-b60b-33cb5f765ef9" class="">Whole-brain imaging of synapses requires resolution less than 20 nm for a system of millions if not billions of neurons (Xu et al. <a href="https://www.biorxiv.org/content/10.1101/2020.01.21.911859v1">2020</a>). Clearly this is hard.</p><h2 id="978456e0-2aeb-41ec-8ee5-5e27352f3087" class="">II. Constructing biologically plausible models</h2><p id="fc137792-0fc8-4c42-b4a1-3a9600463a50" class="">Simulations and mathematical models have long been used to investigate microcircuits and propose mechanisms for basic tasks. Recently, there&#x27;s been a movement to create models with hierarchical structure, one of the hallmarks of deep learning. Hierarchical architectures are a strong inductive bias in learning and we have reason to believe they are prominent in brain neural networks. The task, then, is to reconcile hierarchical arrangements of neurons with the physiology of signal propagation. </p><h3 id="06b9083f-cd56-4cdb-a373-91b32dbb6c50" class="">The &#x27;credit assignment&#x27; problem</h3><p id="f8b321ea-fd70-47a1-a1dc-81a810ac1ce0" class="">Backpropagation, the learning rule used by deep ANNs, is unreasonable in the brain since it involves each neuron having knowledge of many thousands or millions of weights in other layers. Many models have been designed with biologically plausible learning signals, but they underperform compared to backpropagation. Scellier and Bengio (<a href="https://arxiv.org/abs/1602.05179">2016</a>) introduced a model based on Hebbian rules, but it depends on symmetric feedforward and feedback weights. </p><div id="7e989dde-b7c2-4bd9-be26-db8889aaaa95" class="column-list"><div id="6f9825c6-2536-4d05-afa0-01bd57b2327c" style="width:50%" class="column"><p id="f9a64c23-8f72-43fb-bf7c-7f34b4aba05c" class="">Lillicrap et al. (<a href="https://www.nature.com/articles/ncomms13276">2016</a>) came up with a fascinating idea that surmounts some of these problems. Briefly, backpropagation requires neurons to know each others&#x27; synaptic weights to propagate the error signal. Lillicrap simply substitutes the weights with a random matrix in the &#x27;feedback&#x27; phase.</p></div><div id="1408c784-db49-42e8-aab1-1c26b0914ae0" style="width:50%" class="column"><figure id="6e984dd3-d1ec-41d0-ad2f-e2f232d4ab08" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>δ</mi><mrow><mi>B</mi><mi>P</mi></mrow></msub><mo>=</mo><msup><mi>W</mi><mi>T</mi></msup><mi>e</mi></mrow><annotation encoding="application/x-tex">\delta_{BP} = W^Te</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03785em;">δ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05017em;">B</span><span class="mord mathdefault mtight" style="margin-right:0.13889em;">P</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8913309999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8913309999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span><span class="mord mathdefault">e</span></span></span></span></span></div></figure><figure id="20f9c0f9-8346-4671-b74b-139a66017810" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>δ</mi><mrow><mi>F</mi><mi>A</mi></mrow></msub><mo>=</mo><mi>B</mi><mi>e</mi><mspace linebreak="newline"></mspace><mtext> where B = random weights</mtext></mrow><annotation encoding="application/x-tex">\delta_{FA} = Be \\\text{ where B = random weights}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03785em;">δ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">F</span><span class="mord mathdefault mtight">A</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault">e</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord text"><span class="mord"> where B = random weights</span></span></span></span></span></span></div></figure></div></div><p id="b822c001-4fcb-413a-878f-436b4d53b18f" class="">The discovery here is that error signals can work in another way and still exhibit backpropagation-like performance. In this algorithm, the feedforward W is made to approach the feedback B^T throughout learning (the so-called &quot;feedback alignment&quot;). The feedback alignment algorithm achieves performance comparable to backpropagation in terms of learning rate and accuracy on linear problems and more complex non-linear problems like MNIST.</p><h3 id="1f39df60-a0bf-4246-aa19-1536bcb2d6b8" class="">Simultaneous feedforward and feedback pathways</h3><p id="7cf4ef1f-aad2-46eb-bd35-bd7db2fb29ac" class="">The problem with feedback alignment and similar proposals is that they assume the existence of a separate pathway for the error signal and neuron activation. There exists no physiological evidence for such pairings. </p><p id="ecebf2fb-1510-4cbb-bf6c-c253753ebaa7" class="">Guerguiev et al. (<a href="https://elifesciences.org/articles/22901">2017</a>) argue for a novel model of neurons that compartmentalizes feedforward and feedback information. The model has priors from the mammalian cortex and implements integration of information in two separate parts of the same neuron: online computation in the somatic compartments, and weight updates in the apical dendrites. Using the same random weights approach as Lillicrap, Guerguiev presents a composable, multi-layer structure and achieves similar performance on MNIST.</p><p id="40625fb7-9854-4752-bae8-696ca11aa6e8" class="">
+</p><figure id="6e1c3a51-9d54-4364-91d4-36cea43bbd04" class="image"><a href="So%20how%20does%20learning%20work/F1.large_(1).jpg"><img style="width:432px" src="So%20how%20does%20learning%20work/F1.large_(1).jpg"/></a><figcaption>Figure 2. Visualization of hierarchical neural network with feedback and feedforward connections (Payeur et al. 2020)</figcaption></figure><p id="e1a64c25-fcb2-4d94-b1b4-b0ae670e635a" class="">Very recently, Payeur et al. (<a href="https://www.biorxiv.org/content/10.1101/2020.03.30.015511v1.full">2020</a>) proposed a burst-dependent model that performs as well as standard, gradient-based neural networks while relying on a lot of biologically reasonable mechanisms. </p><p id="6bfc091f-b8bd-4ecc-9835-0829aeae701b" class="">They design a learning rule where, given a presynaptic trace, a postsynaptic <em>burst</em> leads to LTP and a postsynaptic<em> single spike</em> leads to LTD. </p><figure id="7d9bd36d-1599-4cfa-8228-2b02ff794090" class="image"><a href="So%20how%20does%20learning%20work/Screen_Shot_2020-04-17_at_3.28.56_PM.png"><img style="width:288px" src="So%20how%20does%20learning%20work/Screen_Shot_2020-04-17_at_3.28.56_PM.png"/></a></figure><p id="9699455a-c8c6-4f32-9b20-22e41eb34d11" class="">The equation describes the learning rule: namely, the change of the synaptic weight over time is a function of the learning rate, the burst train in the postsynaptic cell minus the event train, multiplied by the eligibility trace of the presynaptic cell.</p><p id="b1c2057b-1af2-4d49-97c9-6ac87cd0a629" class="">Importantly, the rule reconciles the fact that feedback from higher-order areas cannot disrupt the online functioning of neurons—learning must be able to occur at the same time as sensory processing. Further, it allows for linearity in the feedback domain: information is conveyed in a graded fashion since the feedback signal is the probability an event is a burst.</p><p id="5ae89d12-b540-4966-bfa4-3b4ab1f8f32d" class="">The rate of an event (spike/burst) is the feedforward, normal processing of the neuron, while the probability that a given event is a burst is the feedback information from higher-order neurons. This clever manipulation is what allows for simultaneous processing of feedforward and feedback information, removing the constraint of symmetric weights in your network.</p><p id="9439c924-7002-45d3-9c59-397418dee245" class="">
+</p><figure id="6c6580fc-9754-491f-b905-030a0f0e222b" class="image"><a href="So%20how%20does%20learning%20work/Untitled%201.png"><img style="width:288px" src="So%20how%20does%20learning%20work/Untitled%201.png"/></a><figcaption>Figure 3. Output of hierarchical assembly of burst-dependent neuron given different inputs (before, after training) demonstrating XOR function (Payeur et al., 2020)</figcaption></figure><p id="c22eb000-75b5-44f7-aa92-8edc3586d18b" class="">Importantly, once arranged in a hierarchy of 5 neurons (two input, one hidden, two output), the model was able to learn an XOR function of inputs. The proposed learning rule allows for multiplexing (simultaneous feedforward and feedback) and hierarchical credit assignment in an artificial neural network.</p><figure id="52763626-1c7e-4681-aa82-f161c18e1572" class="image"><a href="So%20how%20does%20learning%20work/Untitled%202.png"><img style="width:480px" src="So%20how%20does%20learning%20work/Untitled%202.png"/></a><figcaption>Figure 4. Learning curve of burst-dependent model on CIFAR-10 dataset (Payeur et al., 2020)</figcaption></figure><p id="9c947681-41ac-43a4-9525-f7f46d323c07" class="">The authors extended their experiments by creating ensembles of burst-dependent neurons and training it on image data. The burst-dependent model significantly outperforms both feedback alignment (fixed feedback weights) and learning with a global reinforcement term (node perturbation).</p><p id="0a91029a-22fa-40e4-b7a1-940dd34addcd" class="">Overall, biologically plausible learning models constitute a novel and promising approach to understanding human learning. However, it is worth noting that what you measure is what you make. A good number of these learning models are measured by their performance on linear tasks or simple classification tasks (MNIST), which makes sense because of their interpretability and limited computational requirements, but hazards the risk of guiding the models in very specific or undesired directions. Abstraction and transferability are key characteristics of human learning—tasks that better capture the complex environments we live in are desirable and ultimately necessary to form any notion of success in brain-based models.</p><h2 id="71767f83-f910-4e0e-b540-def3a38e61bf" class="">III. Deriving insight from deep ANNs </h2><p id="4ce6cd94-57d8-406d-b635-53d8f8dd7a02" class="">In recent years, deep neural networks have achieved considerable success at tasks like image recognition. It&#x27;s a tad remarkable that the design of a successful learning algorithm, one which is only shallowly modelled after the brain, has preceded the understanding of the actual learning algorithms in the brain.</p><p id="2f4c4577-762d-4e14-b91f-be2df6a1c0cd" class="">ANNs are interesting because they show properties that classic von Neumann algorithms lack but are very much characteristic of human learning. As an example, CNNs show invariance to object position and lighting, and can generalize to unseen images. </p><p id="c85b24be-f2ba-4326-8c98-b51f34e42348" class="">As deep ANNs have continued to evolve, Schrimpf et al. (<a href="https://www.biorxiv.org/content/10.1101/407007v1.full">2018</a>) set about to quantify how &quot;brain-like&quot; recent architectures are. Among other benchmarks, Schrimpf observes whether the artificial neurons are correlated with real recordings of ventral stream visual neurons of a primate. Artificial neurons are mapped to real neurons in the ventral stream with a linear transformation, and the predicted response on a held-out image is compared to the actual response to obtain a neural predictivity score. </p><figure id="da371571-83fe-4316-9cd4-3bd2747fdb60" class="image"><a href="So%20how%20does%20learning%20work/Screen_Shot_2020-04-17_at_1.27.04_AM.png"><img style="width:240px" src="So%20how%20does%20learning%20work/Screen_Shot_2020-04-17_at_1.27.04_AM.png"/></a></figure><p id="fccf3ff9-5de2-44fc-b200-25feb437bc82" class="">The Pearson correlation coefficient is computed between predicted and actual responses and aggregated across train-test splits.</p><figure id="c0be3233-f0f0-412a-bca6-8946efb25f28" class="image"><a href="So%20how%20does%20learning%20work/Untitled%203.png"><img style="width:528px" src="So%20how%20does%20learning%20work/Untitled%203.png"/></a><figcaption>Figure 5. Top: neural predictivity was modelled as a function of similarity between artificial and real neurons. Bottom: ImageNet performance plotted against Brain-Score (Schrimpf et al., 2018)</figcaption></figure><p id="beec8c1c-c204-47a8-ae06-f032e15f2c0e" class="">
+</p><p id="0a15eb3e-78a8-4387-9c99-ed777838d773" class="">Figure 5 shows the results of their inquiry. Points in green are well-known, state of the art models, while points in grey are earlier ANN designs. ImageNet performance is plotted against the Brain-Score, an aggregation of benchmarks of neural similarity. </p><p id="73db44c6-95b9-4e1d-9838-eb4fcd3b571a" class="">The brain-like-ness of ANN architectures is positively correlated with their performance—in other words, as ANNs have evolved to perform better at image recognition, they have also, without strictly trying, become more brain-like in their activations. </p><p id="d112185a-5b17-4311-bd3c-6efb1299f37c" class="">The interpretation of the paper is that internal<em> representation</em>s of images are similar between artificial neural networks and the ventral visual cortical areas. We can infer that the architecture—the substrate—of learning in the brain is similar to the architecture of deep ANNs—that is, hierarchical, with ever-increasing receptive fields and assemblies of neurons that act as convolutional filters for certain features. Importantly, we learn that multiple layers of neurons are involved in learning a representation of an image, and that any plausible learning mechanism must involve modulation of neurons across multiple synapses.</p><p id="67148fb5-b3ab-446b-ab93-abc816328225" class="">We may not be able to conclude strictly that the mechanisms of learning in the brain mirror the mechanisms in ANNs, but as the evidence of structural similarity increases, the suggestion of functional similarity becomes a bit more reasonable.</p><p id="7723933b-898a-48c9-b7b8-250fae796126" class="">It is worthwhile to recognize the type of data that is provided to the human. There are parallels with the world of machine learning:</p><figure id="a7b82052-8a48-4ce4-93a8-cbebfc35b7cf" class="image"><a href="So%20how%20does%20learning%20work/Untitled%204.png"><img style="width:432px" src="So%20how%20does%20learning%20work/Untitled%204.png"/></a><figcaption>Figure 6. Slide presented at NIPS by Facebook AI Chief Yann LeCun (<a href="https://medium.com/syncedreview/yann-lecun-cake-analogy-2-0-a361da560dae">2016</a>). Included it here because I thought it was insightful</figcaption></figure><blockquote id="e20f38e9-3cba-4107-a807-360fc68e9dad" class="">If intelligence is a cake, the bulk of the cake is unsupervised learning, the icing on the cake is supervised learning, and the cherry on the cake is reinforcement learning (LeCun, <a href="https://medium.com/syncedreview/yann-lecun-cake-analogy-2-0-a361da560dae">2016</a>)</blockquote><p id="95044bf7-9231-4caf-b260-14683e5f9f83" class="">What LeCun refers to here is how data looks in the real world: the majority is not labelled, and rewards are scarce for the purpose of directing behaviour. And currently, the golden child of the field of AI is convolutional neural networks, an algorithm that relies on a surplus of labelled image data. </p><p id="8dbdec27-e653-4731-a4a8-8f8ca72b31e5" class="">Similarly, in the human realm we are provided orders of magnitudes more unlabelled data than labelled data. As deep ANNs progress towards solving unsupervised or self-supervised learning tasks, we might find better parallels with human learning then.</p><h2 id="b02cdde2-a0c8-480c-89b7-11ceee3073a9" class="">How much do we know about learning?</h2><p id="f3e722e9-57e4-4f9e-b65f-27e3392b429f" class="">At the end of the day, we don&#x27;t have a complete story to tell, though it appears we&#x27;ve made a good start in three different directions. The future of learning more about learning will involve a combination of better tools to observe synaptic structures in the cortex, better metrics to assess biologically-inspired learning models, and emphasis on unsupervised learning in the domain of deep neural networks.</p><p id="f4ef2c6d-ed8d-4baa-8a4d-b404876d82ed" class="">
+</p><p id="5ce766fa-86ee-4a40-8b74-6424292e7d7c" class="">[1]. Bliss, T. V. &amp; Lomo, T. Long-lasting potentiation of synaptic transmission in
+the dentate area of the anaesthetized rabbit following stimulation of the
+perforant path. J. Physiol. (Lond.) 232, 331–356 (1973).</p><p id="b19ce35a-04d0-42a4-aa52-d235e190a647" class="">[2]. Creutzfeldt, O. D. Generality of the functional structure of the neocortex. Naturwissenschaften, 64(10), 507–517. doi:10.1007/BF00483547</p><p id="daf28a4f-af0b-4b66-9157-2926d9ca0caa" class="">[3]. D. O. Hebb. The Organization of Behavior. Wiley, New York, 1949.</p><p id="338c920f-4f82-44fa-9e48-85983b90de16" class="">[4]. J. Guerguiev, T. P. Lillicrap, and B. A. Richards. Towards deep learning with segregated dendrites. eLife, 6:e22901</p><p id="30bade79-b957-4cc2-9263-e64e664a0367" class="">[5]. Marcus, G., Marblestone, A., &amp; Dean, T. (2014). The atoms of neural computation. Science, 346 (6209), 551–552. doi: 10.1126/science.126166</p><p id="61f76299-dc6a-47a7-bcba-3d6c1cba263d" class="">[6]. A. Payeur, J. Guerguiev, F. Zenke, B.A. Richards, and R. Naud. Burst-dependent synaptic plasticity can coordinate learning in hierarchical circuits. BioRxiv, 2020.</p><p id="a368c215-c142-405e-a284-100cace6cd85" class="">[7]. Scala, F., Kobak, D., Shan, S. et al. Layer 4 of mouse neocortex differs in cell types and circuit organization between sensory areas. Nat Commun 10, 4174 (2019). <a href="https://doi.org/10.1038/s41467-019-12058-z">https://doi.org/10.1038/s41467-019-12058-z</a></p><p id="6424b192-4dd7-4f08-a494-697cc76f583d" class="">[8]. B. Scellier and Y. Bengio. Towards a biologically plausible backprop. arXiv preprint arXiv:1602.05179</p><p id="0e67186a-ddeb-4c59-b451-788c37dd5280" class="">[9].M. Schrimpf, J. Kubilius, H. Hong, N.J. Majaj, R. Rajalingham, E.B. Issa, K. Kar, P. Bashivan, J. Prescott-Roy, K. Schmidt, <em>et al. </em>Brain-score: Which artificial neural network for object recognition is most brain-like? bioRxiv (2018), p. 407007</p><p id="e771c5b8-f1d8-4c46-b702-ddec0758f40b" class="">[10]. Xu, C.S., et al., A Connectome of the Adult Drosophila Central Brain. BioRxiv, 2020.</p><p id="8a2bd994-3999-4bac-a287-f4968f33202a" class="">
+</p><p id="03115511-7f52-4f59-9591-675060495f1c" class="">
+</p></div></article></body></html>
